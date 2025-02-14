@@ -77,8 +77,10 @@ class handler(CDCAbstract):
         executable_path = os.path.join("drivers", self.platform, driver_name)
 
         if browser_type.lower() == "firefox":
+            service = FirefoxService(executable_path)
             self.driver = webdriver.Firefox(executable_path=executable_path, options=options)
         else:
+            service = ChromeService(executable_path)
             self.driver = webdriver.Chrome(executable_path=executable_path, options=options)
 
         self.driver.set_window_size(1600, 768)
