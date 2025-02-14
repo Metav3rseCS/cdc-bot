@@ -7,6 +7,8 @@ from typing import Dict, Union
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select, WebDriverWait
 
@@ -244,11 +246,11 @@ class handler(CDCAbstract):
     def account_login(self):
         self.open_home_page(sleep_delay=2)
 
-        prompt_login_btn = selenium_common.wait_for_elem(self.driver, By.XPATH, "//*[@id='top-menu']/ul/li[10]/a")
+        prompt_login_btn = selenium_common.wait_for_elem(self.driver, By.XPATH, "//div[@id='login' and @class='et_pb_module dipl_modal dipl_modal_0_tb_header']")
         prompt_login_btn.click()
 
-        learner_id_input = selenium_common.wait_for_elem(self.driver, By.NAME, "userId")
-        password_input = selenium_common.wait_for_elem(self.driver, By.NAME, "password")
+        learner_id_input = selenium_common.wait_for_elem(self.driver, By.NAME, "userId_4")
+        password_input = selenium_common.wait_for_elem(self.driver, By.NAME, "password_4")
 
         learner_id_input.send_keys(self.username)
         password_input.send_keys(self.password)
